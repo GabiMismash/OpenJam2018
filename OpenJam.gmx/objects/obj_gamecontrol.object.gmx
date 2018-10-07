@@ -30,6 +30,7 @@ global.debug = false
 global.pause = false
 global.charmenu = false
 global.pausemenu = false
+global.textpopup = false
 global.menuselect = 0 //0 = resume, 1 = save, 2 = load, 3 = options, 4 = quit
 global.menusub = 0 //0 = root, 1 = options
 global.inputL = false
@@ -152,7 +153,8 @@ if(keyboard_check_pressed(ord('Z')))
     {
         global.inputB = true
     }
-if(keyboard_check_released(ord('Z')))
+//if(keyboard_check_released(ord('Z')))
+else
     {
         global.inputB = false
     }
@@ -160,7 +162,8 @@ if(keyboard_check_pressed(ord('X')))
     {
         global.inputA = true
     }
-if(keyboard_check_released(ord('X')))
+//if(keyboard_check_released(ord('X')))
+else
     {
         global.inputA = false
     }

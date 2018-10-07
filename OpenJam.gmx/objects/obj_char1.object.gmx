@@ -34,6 +34,8 @@ step = 0
 frame = 1
 targetx = x
 targety = y
+global.playerprobex = x
+global.playerprobey = y + 128
 </string>
           </argument>
         </arguments>
@@ -99,6 +101,28 @@ if(idle = false and global.pause = false)
 else
     {
         speed = 0
+    }
+//0 = r,1 = u, 2 = l, 3 = d
+//Player probe for determining where they're looking
+if(dir = 0)
+    {
+        global.playerprobex = x + 128
+        global.playerprobey = y
+    }
+if(dir = 1)
+    {
+        global.playerprobex = x
+        global.playerprobey = y - 128
+    }
+if(dir = 2)
+    {
+        global.playerprobex = x - 128
+        global.playerprobey = y
+    }
+if(dir = 3)
+    {
+        global.playerprobex = x
+        global.playerprobey = y + 128
     }
 </string>
           </argument>

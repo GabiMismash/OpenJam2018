@@ -23,6 +23,7 @@
     <object>objects\obj_char1</object>
     <object>objects\obj_npc</object>
     <object>objects\obj_hitbox</object>
+    <object>objects\obj_textbox</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_test</room>
