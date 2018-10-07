@@ -26,8 +26,23 @@
           <argument>
             <kind>1</kind>
             <string>///Initial Vars
+stay = false
+state = 1 //0 = frozen, 1 = waiting to move, 2 = moving
 homex = x
 homey = y
+newx = homex+((irandom(4)-2)*64)
+newy = homey+((irandom(4)-2)*64)
+wandertime = 500
+wander = wandertime
+image_speed = .02
+with (instance_create(x,y,obj_hitbox))
+    {
+        image_yscale = 1
+        image_xscale = 1
+        parentid = other.id
+        xoffset = 0
+        yoffset = -32
+    }
 </string>
           </argument>
         </arguments>
@@ -50,7 +65,111 @@ homey = y
         <arguments>
           <argument>
             <kind>1</kind>
-            <string></string>
+            <string>///Depth Control
+depth = 0 - (y/2)
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if(global.pause = false)
+{
+if(state = 1)
+    {
+        wander = wander - 1
+        if((wander &lt; 2) or (irandom(wander) = 1))
+            {
+                state = 2
+                wander = wandertime
+                if(irandom(1)=0)
+                    {
+                        newx = homex+((irandom(4)-2)*64)
+                        newy = y
+                    }
+                else
+                    {
+                        newx = x
+                        newy = homey+((irandom(4)-2)*64)
+                    }
+            }
+    }
+if(state = 2)
+    {
+        move_towards_point(newx,newy,1.5)
+        if(point_distance(x,y,newx,newy) &lt; 3)
+            {
+                x = newx
+                y = newy
+                state = 1
+                speed = 0
+            }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Draw Self
+draw_self()
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Debug
+if(global.debug = true)
+    {
+        draw_text(x,y,string(depth))
+    }
+</string>
           </argument>
         </arguments>
       </action>
