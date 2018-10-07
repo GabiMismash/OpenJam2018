@@ -9,6 +9,7 @@
     <sprite>sprites\spr_road</sprite>
     <sprite>sprites\spr_char</sprite>
     <sprite>sprites\spr_enemy1</sprite>
+    <sprite>sprites\spr_npc</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -19,6 +20,7 @@
     <object>objects\obj_gamecontrol</object>
     <object>objects\obj_tile</object>
     <object>objects\obj_char1</object>
+    <object>objects\obj_npc</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room_test</room>
