@@ -150,9 +150,12 @@ if(point_in_rectangle(global.playerprobex,global.playerprobey,x-(32*collisionsca
     }
 if(probed = true and global.pause = false and global.inputA)
     {
-        state = 0
         global.textpopup = true
-        instance_create(0,0,obj_textbox)
+        global.pause = true
+        with(instance_create(0,0,obj_textbox))
+            {
+                text = "This is a text box!"
+            }
     }
 
 </string>

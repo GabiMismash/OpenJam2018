@@ -8,6 +8,68 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>displayed = ""
+charcount = 1
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if((string_length(displayed) &gt;= string_length(text)) and global.inputA = true)
+    {
+        global.textpopup = false
+        global.pause = false
+        instance_destroy()
+    }
+if(string_length(displayed) &lt; string_length(text))
+    {
+        charcount = charcount + .25
+        displayed = string_copy(text,1,floor(charcount))
+        if(global.inputA = true)
+            {
+                charcount = string_length(text)
+                displayed = string_copy(text,1,floor(charcount))
+            }
+    }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="64">
       <action>
         <libid>1</libid>
@@ -26,10 +88,12 @@
           <argument>
             <kind>1</kind>
             <string>draw_set_colour(c_white)
-draw_roundrect((view_wport[0]/2)-256,view_hport[0]-128,(view_wport[0]/2)+256,view_hport[0],false)
+draw_roundrect((view_wport[0]/2)-306,view_hport[0]-206,(view_wport[0]/2)+306,view_hport[0]-24,false)
 draw_set_colour(c_black)
-draw_roundrect((view_wport[0]/2)-248,view_hport[0]-120,(view_wport[0]/2)+248,view_hport[0]-8,false)
-
+draw_roundrect((view_wport[0]/2)-300,view_hport[0]-200,(view_wport[0]/2)+300,view_hport[0]-30,false)
+draw_set_colour(c_white)
+draw_set_halign(fa_left)
+draw_text((view_wport[0]/2)-280,view_hport[0]-190,displayed)
 </string>
           </argument>
         </arguments>
